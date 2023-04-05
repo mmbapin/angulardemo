@@ -1,0 +1,34 @@
+<h1>Wlcome to {{hotelName}}</h1>
+<div [hidden]="hideRooms">
+    Number of Rooms : <span [innerText]="numberOfRooms"></span>
+</div>
+
+{{ rooms?.availableRooms ?? 'No Rooms'}}
+
+{{roomList | json }}
+
+<div *ngIf="rooms.availableRooms > 0">
+    Room List
+    <table>
+        <tr>
+            <th>Even/Odd</th>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Room Price</th>
+            <th>Room Amenities</th>
+            <th>CheckIn Time</th>
+            <th>Rating</th>
+        </tr>
+        <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of roomList | slice : 0:3;  let e=even; let o=odd">
+            <th>{{e ? "Even" : 'Odd'}}</th>
+            <th>{{room.roomNumber}}</th>
+            <th>{{room.roomType | titlecase}}</th>
+            <th>{{room.price | currency: "GBP"}}</th>
+            <th>{{room.amenities | lowercase}}</th>
+            <th>{{room.checkinTime | date : 'longDate'}}</th>
+            <th>{{room.rating | number : '1.1-3'}}</th>
+        </tr>
+    </table>
+</div>
+<button (click)="toggle()">ToggleRooms</button>
+<p>rooms works!</p>
