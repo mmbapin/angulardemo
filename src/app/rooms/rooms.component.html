@@ -17,4 +17,6 @@
     <app-rooms-list [rooms]="roomList" [title]="title" (selectedRoom)="selectRoom($event)"></app-rooms-list>
 </div>
 <button (click)="toggle()">ToggleRooms</button>
+<button (click)="editRoom()">UpdateRoom</button>
+<button (click)="deleteRoom()">DeleteRoom</button>
 <p>rooms works!</p>
